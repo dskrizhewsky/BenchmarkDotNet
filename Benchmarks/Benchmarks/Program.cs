@@ -1,4 +1,10 @@
-﻿using BenchmarkDotNet.Running;
-using Benchmarks;
+﻿#region Copyright Notice
+// ----------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Dmytro Skryzhevskyi">
+// </copyright>
+// ----------------------------------------------------------------------------
+#endregion
 
-var summary = BenchmarkRunner.Run<StructsBenchmark>();
+using BenchmarkDotNet.Running;
+
+var summary = BenchmarkRunner.Run(typeof(Program).Assembly);

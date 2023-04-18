@@ -1,20 +1,15 @@
-﻿using System.Runtime.InteropServices;
+﻿#region Copyright Notice
+// ----------------------------------------------------------------------------
+// <copyright file="StructsBenchmark.cs" company="Dmytro Skryzhevskyi">
+// </copyright>
+// ----------------------------------------------------------------------------
+#endregion
+
+using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
 
 namespace Benchmarks;
 
-/*
-|                Method |      Mean |     Error |    StdDev |    Median |
-|---------------------- |----------:|----------:|----------:|----------:|
-|            ClassUsage | 0.0046 ns | 0.0047 ns | 0.0044 ns | 0.0050 ns |
-|           StructUsage | 0.0024 ns | 0.0033 ns | 0.0029 ns | 0.0004 ns |
-| SequentialStructUsage | 0.0027 ns | 0.0039 ns | 0.0037 ns | 0.0004 ns |
-|   ExplicitStructUsage | 0.0017 ns | 0.0032 ns | 0.0028 ns | 0.0001 ns |
-|       AutoStructUsage | 0.0025 ns | 0.0044 ns | 0.0041 ns | 0.0000 ns |
-|  DateFieldStructUsage | 0.0034 ns | 0.0048 ns | 0.0045 ns | 0.0001 ns |
-|   ObjFieldStructUsage | 0.0114 ns | 0.0151 ns | 0.0141 ns | 0.0071 ns |
-
- */
 public class StructsBenchmark
 {
     private ClassA _classA;
