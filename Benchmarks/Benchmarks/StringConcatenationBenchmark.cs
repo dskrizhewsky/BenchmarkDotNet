@@ -9,14 +9,12 @@ using System.Text;
 using BenchmarkDotNet.Attributes;
 
 namespace Benchmarks;
-
 public class StringConcatenationBenchmark
 {
     private string str1;
     private string str2;
     private string str3;
     private string[] _words;
-    private StringBuilder _sb;
     
     public void Print()
     {
@@ -35,7 +33,6 @@ public class StringConcatenationBenchmark
         str1 = "dfsfsdfsfsfsdfsdfsfdsfsdfsdf";
         str2 = "fdsfsdfsdfsdfsdfsdfsdfsdfsfsfsfsfsfsdfsf";
         str3 = "yyjk,juk,k,dfsfsdfsfsdfsfswerwerwerwerwerwerwerwrewr";
-        _sb = new StringBuilder();
         _words = new []{ str1, str2, str3 };
     }
     
@@ -54,10 +51,11 @@ public class StringConcatenationBenchmark
     [Benchmark()]
     public string StringBuilderBenchmark()
     {
-        _sb.Append(str1);
-        _sb.Append(str2);
-        _sb.Append(str3);
-        return _sb.ToString();
+        var sb = new StringBuilder();
+        sb.Append(str1);
+        sb.Append(str2);
+        sb.Append(str3);
+        return sb.ToString();
     }
 
     [Benchmark()]
