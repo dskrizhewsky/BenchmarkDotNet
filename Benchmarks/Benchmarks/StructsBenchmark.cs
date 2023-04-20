@@ -15,9 +15,6 @@ namespace Benchmarks;
 
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]
-[RyuJitX64Job]
-[RyuJitX86Job]
-[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 5, iterationCount: 5, id: "FastAndDirtyJob")]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 public class StructsBenchmark
 {
