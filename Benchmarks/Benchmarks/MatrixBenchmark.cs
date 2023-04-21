@@ -36,15 +36,20 @@ namespace Benchmarks;
 public class MatrixBenchmark
 {
     private int[,] _mtx;
+    private int[][] _jmtx;
+    const int _dim = 100;
 
     [GlobalSetup]
     public void Setup()
     {
-        _mtx = new int[100, 100];
-        for (int i = 0; i < 100; i++)
+        _mtx = new int[_dim, _dim];
+        _jmtx = new int[_dim][];
+        for (int i = 0; i < _dim; i++)
         {
-            for (int j = 0; j < 100; j++)
+            _jmtx[i] = new int[_dim];
+            for (int j = 0; j < _dim; j++)
             {
+                _jmtx[i][j] = i * j;
                 _mtx[i, j] = i * j;
             }
         }
@@ -53,11 +58,23 @@ public class MatrixBenchmark
     [Benchmark()]
     public void DirectOrder()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < _dim; i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < _dim; j++)
             {
                 _mtx[i, j] = 1;
+            }
+        }
+    }
+    
+    [Benchmark()]
+    public void DirectOrderJagged()
+    {
+        for (int i = 0; i < _dim; i++)
+        {
+            for (int j = 0; j < _dim; j++)
+            {
+                _jmtx[i][j] = 1;
             }
         }
     }
@@ -65,11 +82,23 @@ public class MatrixBenchmark
     [Benchmark()]
     public void OppositeOrder()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < _dim; i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < _dim; j++)
             {
                 _mtx[j, i] = 0;
+            }
+        }
+    }
+    
+    [Benchmark()]
+    public void OppositeOrderJagged()
+    {
+        for (int i = 0; i < _dim; i++)
+        {
+            for (int j = 0; j < _dim; j++)
+            {
+                _jmtx[j][i] = 1;
             }
         }
     }
