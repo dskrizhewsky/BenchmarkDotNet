@@ -28,7 +28,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
-namespace Benchmarks;
+namespace Dmytro.Skryzhevskyi.Benchmarks;
 
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]

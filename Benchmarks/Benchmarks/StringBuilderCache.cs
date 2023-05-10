@@ -25,7 +25,7 @@
 #endregion
 using System.Text;
 
-namespace Benchmarks;
+namespace Dmytro.Skryzhevskyi.Benchmarks;
 
 public static class StringBuilderCache
 {

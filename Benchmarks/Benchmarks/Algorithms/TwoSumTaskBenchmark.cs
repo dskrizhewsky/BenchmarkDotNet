@@ -28,7 +28,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
-namespace Benchmarks.Algorithms;
+namespace Dmytro.Skryzhevskyi.Benchmarks.Algorithms;
 #region Algorithm description
 /*
  Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.

@@ -30,7 +30,7 @@ using log4net;
 using Serilog;
 using Serilog.Core;
 
-namespace Benchmarks;
+namespace Dmytro.Skryzhevskyi.Benchmarks;
 
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]

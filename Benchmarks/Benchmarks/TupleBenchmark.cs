@@ -1,4 +1,5 @@
 ﻿#region Copyright Notice
+
 /*
  * The MIT License (MIT)
  *
@@ -22,12 +23,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
 */
+
 #endregion
+
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
-namespace Benchmarks;
+namespace Dmytro.Skryzhevskyi.Benchmarks;
 
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]
@@ -51,5 +54,27 @@ public class TupleBenchmark
     public Tuple<int, int, int> TupleResult()
     {
         return new(1, 1, 1);
+    }
+
+    [Benchmark()]
+    public int TupleSum()
+    {
+        return TupleSum(new(1, 1, 1));
+    }
+
+    [Benchmark()]
+    public int StructSum()
+    {
+        return StructSum(new RetParams() { a = 1, b = 1, c = 1 });
+    }
+
+    private int TupleSum(Tuple<int, int, int> val)
+    {
+        return val.Item1 + val.Item2 + val.Item3;
+    }
+
+    private int StructSum(RetParams val)
+    {
+        return val.a + val.b + val.c;
     }
 }
