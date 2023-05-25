@@ -39,7 +39,9 @@ You can return the answer in any order.
  */
 #endregion
 
+[SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net80)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [MemoryDiagnoser()]
 public class TwoSumTaskBenchmark

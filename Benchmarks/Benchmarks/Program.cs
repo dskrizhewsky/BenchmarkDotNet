@@ -1,4 +1,5 @@
 ﻿#region Copyright Notice
+
 /*
  * The MIT License (MIT)
  *
@@ -22,8 +23,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
 */
+
 #endregion
 
 using BenchmarkDotNet.Running;
+using Dmytro.Skryzhevskyi.Benchmarks;
+using Dmytro.Skryzhevskyi.Benchmarks.Algorithms;
+
+var switcher = new BenchmarkSwitcher(new[]
+{
+    typeof(TwoSumTaskBenchmark),
+    typeof(LinqBenchmarks),
+    typeof(LoggersBenchmarks),
+    typeof(LoopsBenchmarks),
+    typeof(MatrixBenchmark),
+    typeof(SimdBenchmark),
+    typeof(StringConcatenationBenchmark),
+    typeof(StructsBenchmark),
+    typeof(TupleBenchmark),
+});
+
+switcher.Run(args);
+
 
 var summary = BenchmarkRunner.Run(typeof(Program).Assembly);

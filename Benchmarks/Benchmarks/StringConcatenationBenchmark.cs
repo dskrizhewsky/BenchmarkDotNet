@@ -27,7 +27,6 @@
 
 using System.Text;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
@@ -35,6 +34,7 @@ namespace Dmytro.Skryzhevskyi.Benchmarks;
 
 [SimpleJob(RuntimeMoniker.Net60)]
 [SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net80)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [MemoryDiagnoser()]
 public class StringConcatenationBenchmark
@@ -43,17 +43,6 @@ public class StringConcatenationBenchmark
     private string str2;
     private string str3;
     private string[] _words;
-
-    public void Print()
-    {
-        Console.WriteLine(FormatBenchmark());
-        Console.WriteLine(InterpolationBenchmark());
-        Console.WriteLine(StringBuilderBenchmark());
-        Console.WriteLine(PlusBenchmark());
-        Console.WriteLine(ConcatBenchmark());
-        Console.WriteLine(JoinBenchmark());
-        Console.WriteLine(AggregateBenchmark());
-    }
 
     [GlobalSetup]
     public void Setup()
