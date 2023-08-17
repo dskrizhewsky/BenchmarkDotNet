@@ -26,25 +26,29 @@
 
 #endregion
 
-using BenchmarkDotNet.Running;
-using Dmytro.Skryzhevskyi.Benchmarks;
-using Dmytro.Skryzhevskyi.Benchmarks.Algorithms;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Order;
 
-var switcher = new BenchmarkSwitcher(new[]
+namespace Dmytro.Skryzhevskyi.Benchmarks;
+
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net80)]
+[Orderer(SummaryOrderPolicy.FastestToSlowest)]
+public class EnumBenchmark
 {
-    typeof(TwoSumTaskBenchmark),
-    typeof(LinqBenchmarks),
-    typeof(LoggersBenchmarks),
-    typeof(LoopsBenchmarks),
-    typeof(MatrixBenchmark),
-    typeof(SimdBenchmark),
-    typeof(StringConcatenationBenchmark),
-    typeof(StructsBenchmark),
-    typeof(TupleBenchmark),
-    typeof(EnumBenchmark),
-});
+    [Benchmark()]
+    public string GetFruitByNameOf() => nameof(Fruits.Peach);
 
-switcher.Run(args);
+    [Benchmark()]
+    public string GetFruitByToString() => Fruits.Peach.ToString();
+}
 
-
-var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
+public enum Fruits
+{
+    Orange,
+    Apple,
+    Banana,
+    Peach
+}
